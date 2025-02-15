@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,11 +8,32 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "475px",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: {
+          "100": "#FFE8F0",
+          DEFAULT: "#EE2B69",
+        },
+        secondary: "#FBE843",
+        black: {
+          "100": "#333333",
+          "200": "#141413",
+          "300": "#7D8087",
+          DEFAULT: "#000000",
+        },
+        white: {
+          "100": "#F7F7F7",
+          DEFAULT: "#FFFFFF",
+        },
+      },
+      fontFamily: {
+        "work-sans": ["var(--font-work-sans)"],
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+};
+
+export default config;
