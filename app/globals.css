@@ -21,6 +21,22 @@ body {
 }
 
 @layer utilities {
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .text-16-medium {
+    @apply font-medium text-[16px] text-black;
+  }
+
+  .text-26-semibold {
+    @apply font-semibold text-[26px] text-black;
+  }
+
+  .text-30-semibold {
+    @apply font-semibold text-[30px] text-black;
+  }
+
   .heading {
     @apply uppercase bg-black px-6 py-3 font-work-sans font-extrabold 
             text-white sm:text-[54px] sm:leading-[64px] text-[36px] 
@@ -58,5 +74,33 @@ body {
 
   .search-btn {
     @apply size-[50px] rounded-full bg-black flex justify-center items-center text-white !important;
+  }
+
+  .section-container {
+    @apply px-6 py-10 max-w-7xl mx-auto;
+  }
+
+  .card-grid {
+    @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+  }
+
+  .startup-card {
+    @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100;
+  }
+
+  .startup-card-date {
+    @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full group-hover:bg-white-100;
+  }
+
+  .startup-card-desc {
+    @apply font-normal text-[16px] line-clamp-2 my-3 text-black-100 break-all;
+  }
+
+  .startup-card-img {
+    @apply w-full h-[164px] rounded-[10px] object-cover;
+  }
+
+  .startup-card-btn {
+    @apply rounded-full bg-black-200 font-medium text-[16px] text-white px-5 py-3 !important;
   }
 }
