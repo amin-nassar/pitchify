@@ -2,12 +2,17 @@ import { SearchForm, StartupCard } from "@/app/components";
 import { StartupTypeCard } from "../components/StartupCard";
 import { STARTUP_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { auth } from "@/auth";
 
 interface IPage {
   searchParams: Awaited<{ query?: string }>;
 }
 
 export default async function Page({ searchParams }: IPage) {
+  const session = await auth();
+
+  console.log({ session });
+
   const { query } = await searchParams;
   const params = { search: query || null };
   const { data: posts } = await sanityFetch({ query: STARTUP_QUERY, params });
