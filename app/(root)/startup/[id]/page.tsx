@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Image from "next/image";
 import markdownIt from "markdown-it";
+import { Views } from "@/app/components";
 
 const md = markdownIt();
 
@@ -77,6 +78,8 @@ async function Page({ params }: IPage) {
         </div>
 
         <hr className="divider" />
+
+        <Views views={startupPost.views} />
       </section>
     </>
   );
