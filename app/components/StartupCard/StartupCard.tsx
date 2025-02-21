@@ -3,24 +3,10 @@ import { Eye } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-
-export interface Post {
-  _id: number;
-  _createdAt: string;
-  views: number;
-  author: {
-    _id: number;
-    name: string;
-    image: string;
-  };
-  description: string;
-  image: string;
-  title: string;
-  category: string;
-}
+import { StartupTypeCard } from "./types";
 
 interface Props {
-  post: Post;
+  post: StartupTypeCard;
 }
 
 function StartupCard({ post }: Props) {
@@ -53,7 +39,7 @@ function StartupCard({ post }: Props) {
 
         <Link href={`/user/${post.author._id}`}>
           <Image
-            src={post.author.image}
+            src={post.author.image!}
             alt="placeholder"
             width={48}
             height={48}
@@ -69,7 +55,7 @@ function StartupCard({ post }: Props) {
       </Link>
 
       <div className="flex-between gap-3 mt-5">
-        <Link href={`/query=${post.category.toLowerCase()}`}>
+        <Link href={`/query=${post.category?.toLowerCase()}`}>
           <p className="text-16-medium">{post.category}</p>
         </Link>
         <Button className="startup-card-btn">

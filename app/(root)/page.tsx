@@ -1,5 +1,5 @@
 import { SearchForm, StartupCard } from "@/app/components";
-import { Post } from "../components/StartupCard/StartupCard";
+import { StartupTypeCard } from "../components/StartupCard";
 import { client } from "@/sanity/lib/client";
 import { STARTUP_QUERY } from "@/sanity/lib/queries";
 interface IPage {
@@ -8,7 +8,7 @@ interface IPage {
 
 export default async function Page({ searchParams }: IPage) {
   const { query } = await searchParams;
-  const posts: Post[] = await client.fetch(STARTUP_QUERY);
+  const posts = await client.fetch(STARTUP_QUERY);
 
   return (
     <>
@@ -30,7 +30,7 @@ export default async function Page({ searchParams }: IPage) {
         </p>
         <ul className="mt-7 card-grid">
           {posts.length ? (
-            posts.map((post) => {
+            posts.map((post: StartupTypeCard) => {
               return <StartupCard key={post._id} post={post} />;
             })
           ) : (
