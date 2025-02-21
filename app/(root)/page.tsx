@@ -1,25 +1,14 @@
 import { SearchForm, StartupCard } from "@/app/components";
 import { Post } from "../components/StartupCard/StartupCard";
+import { client } from "@/sanity/lib/client";
+import { STARTUP_QUERY } from "@/sanity/lib/queries";
 interface IPage {
   searchParams: Awaited<{ query?: string }>;
 }
 
 export default async function Page({ searchParams }: IPage) {
   const { query } = await searchParams;
-
-  const posts: Post[] = [
-    {
-      _createdAt: new Date(),
-      views: 55,
-      _id: 1,
-      author: { _id: 1, name: "Amin" },
-      category: "Health",
-      description: "Description",
-      image:
-        "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "iO Health",
-    },
-  ];
+  const posts: Post[] = await client.fetch(STARTUP_QUERY);
 
   return (
     <>

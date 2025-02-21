@@ -6,11 +6,12 @@ import { Button } from "@/components/ui/button";
 
 export interface Post {
   _id: number;
-  _createdAt: Date;
+  _createdAt: string;
   views: number;
   author: {
     _id: number;
     name: string;
+    image: string;
   };
   description: string;
   image: string;
@@ -27,7 +28,7 @@ function StartupCard({ post }: Props) {
     <li className="startup-card group">
       <div className="flex-between">
         <p className="startup-card-date">
-          {post._createdAt.toLocaleString("en-US", {
+          {new Date(post._createdAt).toLocaleString("en-US", {
             month: "long",
             day: "2-digit",
             year: "numeric",
@@ -52,7 +53,7 @@ function StartupCard({ post }: Props) {
 
         <Link href={`/user/${post.author._id}`}>
           <Image
-            src="https://i.pravatar.cc/500"
+            src={post.author.image}
             alt="placeholder"
             width={48}
             height={48}
