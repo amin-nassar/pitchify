@@ -1,7 +1,7 @@
 import { SearchForm, StartupCard } from "@/app/components";
 import { StartupTypeCard } from "../components/StartupCard";
 import { STARTUP_QUERY } from "@/sanity/lib/queries";
-import { sanityFetch } from "@/sanity/lib/live";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 interface IPage {
   searchParams: Awaited<{ query?: string }>;
@@ -39,6 +39,8 @@ export default async function Page({ searchParams }: IPage) {
           )}
         </ul>
       </section>
+
+      <SanityLive />
     </>
   );
 }
