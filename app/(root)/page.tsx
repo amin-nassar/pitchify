@@ -9,7 +9,8 @@ interface IPage {
 
 export default async function Page({ searchParams }: IPage) {
   const { query } = await searchParams;
-  const { data: posts } = await sanityFetch({ query: STARTUP_QUERY });
+  const params = { search: query || null };
+  const { data: posts } = await sanityFetch({ query: STARTUP_QUERY, params });
   return (
     <>
       <section className="hero-container">
