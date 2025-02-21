@@ -1,15 +1,15 @@
 import { SearchForm, StartupCard } from "@/app/components";
 import { StartupTypeCard } from "../components/StartupCard";
-import { client } from "@/sanity/lib/client";
 import { STARTUP_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
+
 interface IPage {
   searchParams: Awaited<{ query?: string }>;
 }
 
 export default async function Page({ searchParams }: IPage) {
   const { query } = await searchParams;
-  const posts = await client.fetch(STARTUP_QUERY);
-
+  const { data: posts } = await sanityFetch({ query: STARTUP_QUERY });
   return (
     <>
       <section className="hero-container">
