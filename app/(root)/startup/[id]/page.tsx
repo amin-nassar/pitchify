@@ -2,10 +2,13 @@ import { client } from "@/sanity/lib/client";
 import { STARTUP_BY_ID_QUERY } from "@/sanity/lib/queries";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import markdownIt from "markdown-it";
 import { Views } from "@/app/components";
+import { Skeleton } from "@/components/ui/skeleton";
+
+export const experimental_ppr = true;
 
 const md = markdownIt();
 
@@ -79,7 +82,9 @@ async function Page({ params }: IPage) {
 
         <hr className="divider" />
 
-        <Views views={startupPost.views} />
+        <Suspense fallback={<Skeleton className="view-skeleton" />}>
+          <Views postId={startupPost._id} />
+        </Suspense>
       </section>
     </>
   );
