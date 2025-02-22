@@ -130,4 +130,32 @@
   .view-skeleton {
     @apply bg-zinc-400 h-10 w-24 rounded-lg fixed bottom-3 right-3;
   }
+
+  .startup-form {
+    @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
+  }
+
+  .startup-form-label {
+    @apply font-bold text-[18px] text-black uppercase;
+  }
+
+  .startup-form-input {
+    @apply border-[3px] border-black px-5 py-7 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300 !important;
+  }
+
+  .startup-form-textarea {
+    @apply border-[3px] border-black p-5 text-[18px] text-black font-semibold rounded-[20px] mt-3 placeholder:text-black-300 !important;
+  }
+
+  .startup-form-error {
+    @apply text-red-500 mt-2 ml-5;
+  }
+
+  .startup-form-editor {
+    @apply mt-3 border-[3px] border-black text-[18px] text-black font-semibold placeholder:text-black-300 !important;
+  }
+
+  .startup-form-btn {
+    @apply bg-primary border-[4px] border-black rounded-full p-5 min-h-[70px] w-full font-bold text-[18px] !important;
+  }
 }
