@@ -11,8 +11,6 @@ interface IPage {
 export default async function Page({ searchParams }: IPage) {
   const session = await auth();
 
-  console.log({ session });
-
   const { query } = await searchParams;
   const params = { search: query || null };
   const { data: posts } = await sanityFetch({ query: STARTUP_QUERY, params });
