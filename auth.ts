@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { client } from "./sanity/lib/client";
-import { AUTHOR_BY_ID_QUERY } from "./sanity/lib/queries";
+import { AUTHOR_BY_GOOGLE_ID_QUERY } from "./sanity/lib/queries";
 import { writeClient } from "./sanity/lib/write-client";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
@@ -10,7 +10,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     signIn: async ({ user, profile }) => {
       const existingUser = await client
         .withConfig({ useCdn: false })
-        .fetch(AUTHOR_BY_ID_QUERY, { id: profile?.sub });
+        .fetch(AUTHOR_BY_GOOGLE_ID_QUERY, { id: profile?.sub });
 
       if (!existingUser) {
         await writeClient.create({
@@ -32,7 +32,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       if (account && profile) {
         const user = await client
           .withConfig({ useCdn: false })
-          .fetch(AUTHOR_BY_ID_QUERY, { id: profile?.sub });
+          .fetch(AUTHOR_BY_GOOGLE_ID_QUERY, { id: profile?.sub });
 
         token.id = user?._id;
       }
