@@ -5,6 +5,9 @@ import React, { Suspense } from "react";
 import Image from "next/image";
 import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
 import UserStartups from "@/app/components/UserStartups";
+import { StartupCardSkeleton } from "@/app/components/StartupCard";
+
+export const experimental_ppr = true;
 
 interface IPage {
   params: Awaited<{ id: string }>;
@@ -41,7 +44,9 @@ async function Page({ params }: IPage) {
           {session?.id === id ? "Your" : "All"} Startups
         </p>
         <ul className="card-grid-sm">
-          <UserStartups userId={id} />
+          <Suspense fallback={<StartupCardSkeleton cardsCount={5} />}>
+            <UserStartups userId={id} />
+          </Suspense>
         </ul>
       </div>
     </section>
