@@ -21,11 +21,12 @@ interface IPage {
 }
 
 async function Page({ params }: IPage) {
-  const startupPost = await client.fetch(STARTUP_BY_ID_QUERY, await params);
-
-  const { select: editorPicks } = await client.fetch(PLAYLIST_BY_SLUG_QUERY, {
-    slug: "editor-picks",
-  });
+  const [startupPost, { select: editorPicks }] = await Promise.all([
+    client.fetch(STARTUP_BY_ID_QUERY, await params),
+    client.fetch(PLAYLIST_BY_SLUG_QUERY, {
+      slug: "editor-picks",
+    }),
+  ]);
 
   if (!startupPost) return notFound();
 
