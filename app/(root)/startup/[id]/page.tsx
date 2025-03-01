@@ -1,5 +1,8 @@
 import { client } from "@/sanity/lib/client";
-import { STARTUP_BY_ID_QUERY } from "@/sanity/lib/queries";
+import {
+  PLAYLIST_BY_SLUG_QUERY,
+  STARTUP_BY_ID_QUERY,
+} from "@/sanity/lib/queries";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
@@ -7,6 +10,7 @@ import Image from "next/image";
 import markdownIt from "markdown-it";
 import { Views } from "@/app/components";
 import { Skeleton } from "@/components/ui/skeleton";
+import StartupCard, { StartupTypeCard } from "@/app/components/StartupCard";
 
 export const experimental_ppr = true;
 
@@ -18,6 +22,10 @@ interface IPage {
 
 async function Page({ params }: IPage) {
   const startupPost = await client.fetch(STARTUP_BY_ID_QUERY, await params);
+
+  const { select: editorPicks } = await client.fetch(PLAYLIST_BY_SLUG_QUERY, {
+    slug: "editor-picks",
+  });
 
   if (!startupPost) return notFound();
 
@@ -81,6 +89,18 @@ async function Page({ params }: IPage) {
         </div>
 
         <hr className="divider" />
+
+        {editorPicks.length > 0 && (
+          <div className="max-w-4xl mx-auto">
+            <p className="text-30-semibold">Editor Picks</p>
+
+            <ul className="mt-7 card-grid-sm">
+              {editorPicks.map((post: StartupTypeCard, i: number) => {
+                return <StartupCard key={i} post={post} />;
+              })}
+            </ul>
+          </div>
+        )}
 
         <Suspense fallback={<Skeleton className="view-skeleton" />}>
           <Views postId={startupPost._id} />
