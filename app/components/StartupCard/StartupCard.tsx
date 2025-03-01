@@ -40,7 +40,7 @@ function StartupCard({ post }: Props) {
         <Link href={`/user/${post.author._id}`}>
           <Image
             src={post.author.image!}
-            alt="placeholder"
+            alt={post.author.name!}
             width={48}
             height={48}
             className="rounded-full"
