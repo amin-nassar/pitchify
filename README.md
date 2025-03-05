@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📌 PITCHIFY – Pitch Your Startup, Get Noticed!
 
-## Getting Started
+![Pitchify Banner](public/images/banner-screenshot.PNG)
 
-First, run the development server:
+🚀 **Pitchify** is a platform for entrepreneurs to **share startup ideas**, **connect with like-minded individuals**, and **vote on pitches** to highlight the most promising startups. Whether you're an innovator looking for feedback or an investor scouting for ideas, **Pitchify** brings the startup community together!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Features
+
+✅ **User Authentication** – Sign up and log in to manage your startup pitches.  
+✅ **Create Pitches** – Share your startup ideas with the community.  
+✅ **Search & Filter** – Easily discover ideas based on categories.  
+✅ **Pitch Markdown Support** – Format your startup pitches beautifully.  
+✅ **View Counter** – Track pitch popularity.  
+✅ **Responsive UI** – Seamless experience across devices.  
+✅ **Error Monitoring** – Integrated with **Sentry** to track and resolve issues.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) ([React](https://react.dev/))
+- **Content Management:** [Sanity.io](https://www.sanity.io/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/plus)
+- **Authentication:** [NextAuth.js](https://next-auth.js.org/)
+- **Monitoring & Bug Tracking:** [Sentry](https://sentry.io/welcome/)
+- **Hosting:** [Vercel](https://vercel.com/)
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+
+```sh
+git clone https://github.com/yourusername/pitchify.git
+cd pitchify
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3️⃣ Set Up Environment Variables
 
-## Learn More
+```ini
+AUTH_SECRET=
+AUTH_GOOGLE_ID=
+AUTH_GOOGLE_SECRET=
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=
+NEXT_PUBLIC_SANITY_API_VERSION=
+SANITY_WRITE_TOKEN=
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4️⃣ Run the Project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔮 Future Improvements
 
-## Deploy on Vercel
+🚧 **Planned Features:**  
+🔹 **User Profiles** – Users will be able to modify their profiles.  
+🔹 **Dark Mode** – A theme toggle for a better user experience.  
+🔹 **Editing Pitches** – Users will be able to update their startup ideas.  
+🔹 **Deleting & Upvoting Pitches** – Users will be able to remove and vote on startup ideas.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📬 Contact
+
+💡 Have feedback or suggestions? Reach out on:  
+📩 **Email:** [amin.nassar.ce@gmail.com](mailto:amin.nassar.ce@gmail.com)  
+🐦 **Twitter:** [@devAminNassar](https://x.com/devAminNassar)  
+💼 **LinkedIn:** [Amin Nassar](https://www.linkedin.com/in/amin-m-nassar/)
